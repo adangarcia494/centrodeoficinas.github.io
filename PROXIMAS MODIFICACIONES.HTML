@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Centro de Oficinas Zona 15 | Oficinas flexibles y coworking</title>
+  <meta name="description" content="Oficinas privadas, coworking y salas de juntas en Zona 15. Planes flexibles para equipos modernos, profesionales independientes y empresas en crecimiento.">
+  <style>
+    :root {
+      --primary: #24527a;
+      --primary-dark: #1a3b58;
+      --primary-light: #e1effa;
+      --accent: #f4a261;
+      --bg: #f8f9fb;
+      --text: #1f2933;
+      --muted: #6b7b8c;
+      --white: #ffffff;
+      --success: #2ecc71;
+      --error: #e74c3c;
+      --shadow: 0 22px 45px rgba(31, 41, 51, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 70px 16px 100px;
+      flex: 1 0 auto;
+    }
+    section {
+      margin-bottom: 65px;
+      background: var(--white);
+      padding: 34px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    h1, h2, h3 { color: var(--primary); }
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; margin-bottom: 18px; }
+    .section-intro { color: var(--muted); margin-bottom: 20px; }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(248, 249, 251, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(31, 41, 51, 0.06);
+      padding: 14px 24px;
+    }
+    .topbar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+    .brand img {
+      height: 44px;
+      width: auto;
+      border-radius: 10px;
+      background: rgba(36, 82, 122, 0.08);
+      padding: 6px 10px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-links a {
+      font-weight: 600;
+      color: var(--muted);
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      width: 22px;
+      height: 2px;
+      background: var(--primary);
+      transition: transform 0.2s ease;
+    }
+    header {
+      background: linear-gradient(135deg, rgba(36, 82, 122, 0.92), rgba(36, 82, 122, 0.75)), url('https://images.unsplash.com/photo-1507209696998-3c532be9b2b4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 90px 16px;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(36, 82, 122, 0.28), rgba(36, 82, 122, 0.48));
+      z-index: 0;
+    }
+    header .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      background: rgba(31, 41, 51, 0.55);
+      padding: 46px 36px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .logo-wrapper img {
+      height: 92px;
+      width: auto;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 12px 20px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(36, 82, 122, 0.18);
+      color: var(--primary-light);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    header p { font-size: 1.14rem; margin-bottom: 30px; color: var(--primary-light); }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 14px 28px rgba(244, 162, 97, 0.35);
+    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 20px 34px rgba(244, 162, 97, 0.45); }
+    .contact-bar {
+      margin-top: 26px;
+      font-size: 0.98rem;
+      color: var(--primary-light);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+    .contact-bar span { display: inline-flex; align-items: center; gap: 8px; }
+    .features-grid,
+    .plans-grid,
+    .packages-grid,
+    .contact-cards,
+    .booking-layout,
+    .testimonial-grid {
+      display: grid;
+      gap: 20px;
+    }
+    .features-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .plan-card,
+    .feature-card,
+    .promo-card,
+    .testimonial-card,
+    .faq-item,
+    .contact-card,
+    .package-card {
+      background: var(--bg);
+      border-radius: 16px;
+      padding: 22px;
+      border: 1px solid rgba(36, 82, 122, 0.12);
+    }
+    .plan-card h3,
+    .feature-card h3,
+    .promo-card h3,
+    .faq-item h3,
+    .contact-card h3 { margin-bottom: 12px; }
+    .plan-card ul,
+    .feature-card ul,
+    .promo-card ul { list-style: none; margin-top: 10px; }
+    .plan-card li,
+    .feature-card li,
+    .promo-card li { margin-bottom: 8px; color: var(--muted); }
+    .plan-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .plan-detail { display: grid; gap: 18px; }
+    .plan-detail ul { list-style: none; color: var(--muted); }
+    .plan-cta {
+      background: rgba(225, 239, 250, 0.4);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(36, 82, 122, 0.16);
+      color: var(--primary-dark);
+    }
+    .packages-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .booking-layout { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
+    .booking-info {
+      background: var(--bg);
+      border-radius: 18px;
+      padding: 26px;
+      border: 1px solid rgba(36, 82, 122, 0.12);
+      color: var(--muted);
+    }
+    form {
+      display: grid;
+      gap: 18px;
+      background: var(--white);
+    }
+    .form-success,
+    .form-error {
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      display: none;
+    }
+    .form-success { background: rgba(46, 204, 113, 0.12); color: var(--success); }
+    .form-error { background: rgba(231, 76, 60, 0.12); color: var(--error); }
+    .form-success.visible,
+    .form-error.visible { display: block; }
+    .testimonial-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-left: 4px solid var(--accent);
+      position: relative;
+      padding-top: 28px;
+    }
+    .testimonial-card::before {
+      content: "“";
+      font-size: 3.6rem;
+      color: rgba(244, 162, 97, 0.35);
+      position: absolute;
+      top: -18px;
+      left: 16px;
+      line-height: 1;
+    }
+    .testimonial-author {
+      margin-top: 14px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .testimonial-role {
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+    .tour-wrapper {
+      display: grid;
+      gap: 20px;
+    }
+    .tour-media {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .tour-media iframe,
+    .map-wrapper iframe {
+      width: 100%;
+      min-height: 360px;
+      border: 0;
+      border-radius: 16px;
+    }
+    footer {
+      text-align: center;
+      padding: 32px 16px 46px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .whatsapp-button {
+      position: fixed;
+      bottom: 26px;
+      right: 22px;
+      z-index: 10;
+    }
+    .whatsapp-button a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: var(--white);
+      padding: 14px 18px;
+      border-radius: 999px;
+      box-shadow: 0 14px 30px rgba(37, 211, 102, 0.35);
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .whatsapp-button a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(37, 211, 102, 0.45);
+    }
+    .whatsapp-button svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+    @media (max-width: 960px) {
+      header h1 { font-size: 2.4rem; }
+      .booking-layout { grid-template-columns: 1fr; }
+      main { padding: 48px 16px 80px; }
+    }
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 16px;
+        background: var(--white);
+        padding: 18px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        gap: 16px;
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .nav-toggle.active span:nth-child(2) { opacity: 0; }
+      .nav-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+      section { padding: 26px; }
+      .contact-bar { flex-direction: column; gap: 6px; }
+      .logo-wrapper img { height: 82px; }
+    }
+    @media (max-width: 520px) {
+      header h1 { font-size: 2rem; }
+      .cta-button { width: 100%; }
+      .whatsapp-button { right: 16px; bottom: 20px; }
+    }
+  </style>
+</head>
+<body data-page="home">
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#inicio">
+        <img id="logo-nav" alt="Logo Centro de Oficinas Zona 15">
+        <span>Centro de Oficinas Zona 15</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#inicio" data-page="home">Inicio</a></li>
+        <li><a href="#servicios" data-page="servicios">Servicios</a></li>
+        <li><a href="#planes" data-page="planes">Planes</a></li>
+        <li><a href="#tour" data-page="tour">Tour</a></li>
+        <li><a href="#testimonios" data-page="testimonios">Reseñas</a></li>
+        <li><a href="#contacto" data-page="contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="inicio">
+    <div class="hero">
+      <div class="logo-wrapper">
+        <img id="logo-hero" alt="Logo Centro de Oficinas Zona 15">
+      </div>
+      <span class="badge">Oficinas flexibles en Zona 15</span>
+      <h1>El espacio profesional que tu equipo necesita, sin contratos complicados.</h1>
+      <p>Oficinas privadas, coworking y salas de juntas diseñadas para empresas, emprendedores y equipos en crecimiento. Ajusta tu plan cada mes y paga solo por lo que usas.</p>
+      <a href="tel:50235654430" class="cta-button">Agenda un recorrido • 3565-4430</a>
+      <div class="contact-bar">
+        <span>📍 19 Av. 4-02, Col. Vista Hermosa 1, Zona 15</span>
+        <span>🕒 L-V 7:00 a.m. – 9:00 p.m. | Sáb 8:00 a.m. – 4:00 p.m.</span>
+        <span>📲 Tel. 3565-4430</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="porque">
+      <h2>¿Por qué Centro de Oficinas Zona 15?</h2>
+      <p class="section-intro">Nos encargamos del espacio, la tecnología y la experiencia, para que tú te concentres en tu negocio.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Imagen corporativa impecable</h3>
+          <p>Recepción profesional, lobby elegante y espacios que impresionan desde la primera visita.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Flexibilidad real</h3>
+          <p>Elige entre oficinas privadas, coworking o horas de sala de juntas según tus proyectos.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Todo incluido</h3>
+          <ul>
+            <li>Internet redundante y climatización</li>
+            <li>Limpieza diaria y café ilimitado</li>
+            <li>Soporte administrativo</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>Ubicación estratégica</h3>
+          <p>Estamos en el corazón corporativo de Zona 15, con estacionamientos y vías principales a minutos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <h2>Servicios diseñados para equipos modernos</h2>
+      <p class="section-intro">Cada plan te brinda un ecosistema de trabajo completo, listo para operar desde el primer día.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Oficinas privadas</h3>
+          <p>Espacios llave en mano con mobiliario premium, climatización independiente y opción de personalización.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Coworking y hot desks</h3>
+          <p>Acceso 24/7 a estaciones ergonómicas, cabinas telefónicas y zonas colaborativas.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Salas de juntas</h3>
+          <p>Videoconferencia plug-and-play, pantallas 4K y servicios de coffee break bajo demanda.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Domicilio fiscal y recepción</h3>
+          <p>Gestionamos correspondencia, visitas y llamadas con atención personalizada.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes">
+      <h2>Planes flexibles para cada etapa</h2>
+      <p class="section-intro">Escala tu equipo, combina servicios y ajusta la capacidad mes a mes sin penalizaciones.</p>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <span class="badge">Oficinas privadas</span>
+          <h3>Tu espacio exclusivo</h3>
+          <ul>
+            <li>Espacios para 2 a 12 personas con llave y control de acceso.</li>
+            <li>Incluye mobiliario ergonómico y lockers.</li>
+            <li>Branding interior y soporte IT a medida.</li>
+          </ul>
+          <a class="plan-link" href="#plan-oficinas">Ver detalles</a>
+        </div>
+        <div class="plan-card">
+          <span class="badge">Coworking Flex</span>
+          <h3>Libertad + comunidad</h3>
+          <ul>
+            <li>Hot desk ilimitado 24/7 o planes part-time.</li>
+            <li>Acceso a cabinas privadas y áreas lounge.</li>
+            <li>Eventos de networking y capacitaciones mensuales.</li>
+          </ul>
+          <a class="plan-link" href="#plan-coworking">Explorar membresías</a>
+        </div>
+        <div class="plan-card">
+          <span class="badge">Salas de juntas</span>
+          <h3>Reuniones productivas</h3>
+          <ul>
+            <li>Reservas por hora, medio día o día completo.</li>
+            <li>Capacidad hasta 16 personas, híbridas o presenciales.</li>
+            <li>Catering, coffee break y soporte técnico incluidos.</li>
+          </ul>
+          <a class="plan-link" href="#plan-salas">Reservar sala</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan-oficinas">
+      <h2>Oficinas privadas</h2>
+      <p class="section-intro">La opción ideal para equipos que buscan privacidad, seguridad y una experiencia premium.</p>
+      <div class="plan-detail">
+        <ul>
+          <li>Espacios configurables desde 12 m² hasta suites corporativas con sala de juntas interna.</li>
+          <li>Control de acceso biométrico y CCTV 24/7.</li>
+          <li>Personaliza tu distribución, logo y señalización interna.</li>
+          <li>Incluye limpieza diaria, mantenimiento y soporte IT básico.</li>
+          <li>Amplía tu capacidad con escritorios adicionales bajo demanda.</li>
+        </ul>
+        <div class="plan-cta">
+          <p>Solicita tarifas, disponibilidad y un recorrido guiado.</p>
+          <a href="#reservas" class="cta-button">Quiero una oficina privada</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan-coworking">
+      <h2>Coworking y membresías flexibles</h2>
+      <p class="section-intro">Perfecto para freelancers, consultores y equipos híbridos. Paga solo por el acceso que necesitas.</p>
+      <div class="packages-grid">
+        <div class="package-card">
+          <h3>Membresía Flex</h3>
+          <p>Acceso ilimitado a hot desks 24/7, cabinas telefónicas y lockers compartidos.</p>
+        </div>
+        <div class="package-card">
+          <h3>Membresía Part-Time</h3>
+          <p>12 días al mes, ideal para agendas híbridas. Incluye 4 horas de sala de juntas.</p>
+        </div>
+        <div class="package-card">
+          <h3>Membresía Team Pass</h3>
+          <p>Credenciales combinadas para hasta 5 usuarios. Rotación libre durante el mes.</p>
+        </div>
+        <div class="package-card">
+          <h3>Day Pass</h3>
+          <p>Uso por día con acceso a todos los servicios comunes. Perfecto para visitas puntuales.</p>
+        </div>
+      </div>
+      <div class="plan-cta">
+        <p>Incluye eventos de networking, café de especialidad, impresiones básicas y soporte del community team.</p>
+        <a href="#reservas" class="cta-button">Solicitar membresía</a>
+      </div>
+    </section>
+
+    <section id="plan-salas">
+      <h2>Salas de juntas y capacitación</h2>
+      <p class="section-intro">Espacios preparados para juntas estratégicas, workshops o presentaciones con clientes.</p>
+      <div class="plan-detail">
+        <ul>
+          <li>Salas de 6, 10 y 16 personas con pantalla 4K y videoconferencia.</li>
+          <li>Asistencia técnica al inicio de cada reunión.</li>
+          <li>Reservas con 24 horas de anticipación (mismo día sujeto a disponibilidad).</li>
+          <li>Opción de coffee break, box lunch y servicio de traducción simultánea.</li>
+        </ul>
+        <div class="plan-cta">
+          <p>Agenda horas sueltas o compra paquetes mensuales con tarifa preferencial.</p>
+          <a href="#reservas" class="cta-button">Cotizar salas</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tour">
+      <h2>Conoce el espacio antes de visitarnos</h2>
+      <p class="section-intro">Recorre nuestras oficinas, salas y áreas comunes con un tour virtual o agenda una visita guiada.</p>
+      <div class="tour-wrapper">
+        <div class="tour-media">
+          <!-- Reemplaza con tu video o slider -->
+          <iframe src="https://www.youtube.com/embed/2g811Eo7K8U" title="Tour Centro de Oficinas Zona 15" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="plan-cta">
+          <p>¿Prefieres verlo en persona? Nuestro equipo te acompaña en un recorrido personalizado.</p>
+          <a href="#reservas" class="cta-button">Agendar visita</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservas">
+      <h2>Reserva tu espacio</h2>
+      <p class="section-intro">Completa el formulario y te confirmamos disponibilidad en menos de un día hábil. Si es urgente, llámanos o escríbenos por WhatsApp.</p>
+      <div class="booking-layout">
+        <div class="booking-info">
+          <h3>Cómo funciona</h3>
+          <ul>
+            <li>Solicita con al menos 24 horas de anticipación (el mismo día depende de disponibilidad).</li>
+            <li>Indica el tipo de espacio, fechas y horarios deseados.</li>
+            <li>Confirmamos por correo o WhatsApp y te enviamos la propuesta económica.</li>
+            <li>Cancelación sin cargo hasta 6 horas hábiles antes de la reserva.</li>
+          </ul>
+          <h3 style="margin-top: 18px;">¿Tienes tu propio enlace de reservas?</h3>
+          <p>Integra Calendly, Cal.com o SimplyBook con tu iframe aquí:</p>
+          <div class="booking-integration">
+            <strong>Reemplaza este texto por tu iframe:</strong><br>
+            &lt;iframe src="TU_ENLACE_CALENDLY" style="min-height:620px; width:100%; border:0;" allowfullscreen&gt;&lt;/iframe&gt;
+          </div>
+        </div>
+
+        <form id="booking-form">
+          <input type="hidden" name="_subject" value="Nueva solicitud - Centro de Oficinas Zona 15">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej. Ing. Andrea Castillo" required>
+            </div>
+            <div class="form-field">
+              <label for="empresa">Empresa / Equipo</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o startup" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tu@empresa.com" required>
+            </div>
+            <div class="form-field">
+              <label for="telefono">Teléfono / WhatsApp</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Ej. 3565-4430" required>
+            </div>
+            <div class="form-field">
+              <label for="plan">Espacio que te interesa</label>
+              <select id="plan" name="plan" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Oficina privada">Oficina privada</option>
+                <option value="Coworking Flex">Coworking Flex</option>
+                <option value="Coworking Part-Time">Coworking Part-Time</option>
+                <option value="Team Pass">Team Pass</option>
+                <option value="Sala de juntas">Sala de juntas</option>
+                <option value="Plan híbrido">Plan híbrido (oficina + coworking)</option>
+                <option value="Otro">Otro (especifica en comentarios)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="tam-equipo">Tamaño del equipo</label>
+              <select id="tam-equipo" name="tam-equipo" required>
+                <option value="">Selecciona una opción</option>
+                <option value="1 persona">1 persona</option>
+                <option value="2-4 personas">2-4 personas</option>
+                <option value="5-10 personas">5-10 personas</option>
+                <option value="11-20 personas">11-20 personas</option>
+                <option value="20+ personas">20+ personas</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="fecha">Fecha preferida de inicio</label>
+              <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-field">
+              <label for="horario">Horario preferido</label>
+              <select id="horario" name="horario" required>
+                <option value="">Selecciona horario</option>
+                <option value="Mañana (7:00 a 12:00)">Mañana (7:00 a 12:00)</option>
+                <option value="Mediodía (12:00 a 16:00)">Mediodía (12:00 a 16:00)</option>
+                <option value="Tarde (16:00 a 21:00)">Tarde (16:00 a 21:00)</option>
+                <option value="Sábado (8:00 a 16:00)">Sábado (8:00 a 16:00)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="comentarios">Comentarios adicionales</label>
+            <textarea id="comentarios" name="comentarios" placeholder="Requisitos técnicos, estaciones adicionales, etc."></textarea>
+          </div>
+
+          <div class="form-field checkbox-field">
+            <input type="checkbox" id="terminos" name="terminos" required>
+            <label for="terminos">Acepto ser contactado por el equipo de Centro de Oficinas Zona 15 para confirmar mi solicitud.</label>
+          </div>
+
+          <button type="submit" class="cta-button">Solicitar información</button>
+          <p class="form-note">Recordatorio: puedes cancelar sin costo hasta 6 horas hábiles antes de tu reserva.</p>
+
+          <div class="form-success" id="form-success">¡Gracias! Nos pondremos en contacto muy pronto.</div>
+          <div class="form-error" id="form-error">Ups, ocurrió un error. Inténtalo de nuevo o escríbenos por WhatsApp.</div>
+        </form>
+      </div>
+    </section>
+
+    <section id="instalaciones">
+      <h2>Instalaciones pensadas para inspirar</h2>
+      <ul>
+        <li>Lobby con recepción bilingüe y lounge para visitantes.</li>
+        <li>Oficinas con luz natural, ventilación independiente y mobiliario ergonómico Herman Miller.</li>
+        <li>Zonas colaborativas, phone booths y terrazas verdes.</li>
+        <li>Cocina equipada, café de especialidad y snacks saludables.</li>
+        <li>Red WiFi redundante, impresoras en red y soporte IT en sitio.</li>
+      </ul>
+    </section>
+
+    <section id="testimonios">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <p class="section-intro">Equipos de diferentes industrias ya eligieron Zona 15 como su base de operaciones.</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p>“Instalarnos en Centro de Oficinas Zona 15 nos permitió escalar de 6 a 18 personas sin mudanzas ni contratos eternos.”</p>
+          <div class="testimonial-author">Laura Méndez</div>
+          <div class="testimonial-role">Directora de Operaciones, InventaLab</div>
+        </div>
+        <div class="testimonial-card">
+          <p>“La sala de juntas con videoconferencia hizo que nuestras reuniones híbridas fueran mucho más fluidas.”</p>
+          <div class="testimonial-author">Roberto Álvarez</div>
+          <div class="testimonial-role">Socio, Lex&Co Consultores</div>
+        </div>
+        <div class="testimonial-card">
+          <p>“Nuestro equipo híbrido aprovecha el coworking y reservamos oficinas privadas cuando tenemos sprints presenciales.”</p>
+          <div class="testimonial-author">Paola Zamora</div>
+          <div class="testimonial-role">Head of People, Nébula Digital</div>
+        </div>
+        <div class="testimonial-card">
+          <p>“La ubicación es clave. Clientes y proveedores llegan fácil, y el estacionamiento nos salvó muchas veces.”</p>
+          <div class="testimonial-author">Juan Diego Paredes</div>
+          <div class="testimonial-role">CEO, BlueWave Marketing</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>¿Hay contratos forzosos?</h3>
+          <p>Nuestros planes son mensuales renovables. Para oficinas privadas solicitamos un mes de depósito reembolsable.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Puedo combinar oficinas con coworking?</h3>
+          <p>Sí. Diseñamos planes híbridos para que tu equipo use oficinas privadas ciertos días y coworking el resto.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿La membresía incluye invitados?</h3>
+          <p>Cada plan contempla horas de sala de juntas y pases de cortesía. Puedes pedir pases adicionales cuando lo necesites.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Ofrecen estacionamiento?</h3>
+          <p>Contamos con convenios preferenciales en estacionamientos cercanos y espacio para bicicletas y scooters.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Puedo recibir correspondencia y paquetería?</h3>
+          <p>Claro. Nuestro equipo de recepción la gestiona y te notifica al instante.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto y ubicación</h2>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <h3>Teléfono y WhatsApp</h3>
+          <p><strong>3565-4430</strong></p>
+          <p>Háblanos de lunes a viernes, 7:00 a.m. a 9:00 p.m.</p>
+        </div>
+        <div class="contact-card">
+          <h3>Visítanos</h3>
+          <p>19 Av. 4-02, Col. Vista Hermosa 1, Zona 15<br>Ciudad de Guatemala</p>
+          <p>Estacionamiento conveniado y seguridad 24/7.</p>
+        </div>
+        <div class="contact-card">
+          <h3>Agenda online</h3>
+          <p>Completa el formulario o solicita un tour virtual con nuestro equipo comercial.</p>
+          <a href="#reservas" class="cta-button" style="justify-self:flex-start;">Ir a reservas</a>
+        </div>
+      </div>
+
+      <div class="map-wrapper" style="margin-top: 26px;">
+        <iframe
+          title="Mapa Centro de Oficinas Zona 15"
+          src="https://www.google.com/maps?q=19+Av.+4-02+Colonia+Vista+Hermosa+1,+Zona+15,+Ciudad+de+Guatemala&output=embed"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+      <p class="map-note">A minutos de Vas, Bulevar Vista Hermosa y zona hotelera. Llegar nunca fue tan sencillo.</p>
+    </section>
+  </main>
+
+  <section class="cta-section" style="text-align:center; padding:50px 16px; background:linear-gradient(135deg, rgba(36,82,122,0.15), rgba(244,162,97,0.18));">
+    <h2>¿Listo para instalar tu próxima oficina?</h2>
+    <p>Llámanos al 3565-4430 o agenda un recorrido guiado hoy mismo.</p>
+    <address style="font-style:normal; margin:18px 0;">
+      CENTRO DE OFICINAS ZONA 15<br>
+      19 Av. 4-02, Colonia Vista Hermosa 1, Zona 15<br>
+      Ciudad de Guatemala
+    </address>
+    <a href="#reservas" class="cta-button">Solicitar información</a>
+    <p style="margin-top:14px;">Horario: L-V 7:00 a.m. – 9:00 p.m. • Sáb 8:00 a.m. – 4:00 p.m.</p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Centro de Oficinas Zona 15. Hecho con buen café y grandes ideas.
+  </footer>
+
+  <div class="whatsapp-button">
+    <a href="https://wa.me/50235654430?text=Hola%20Centro%20de%20Oficinas%20Zona%2015%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20planes" target="_blank" rel="noopener">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16.027 2.07C8.774 2.07 2.88 7.964 2.88 15.217c0 2.607.695 5.06 2.016 7.252L2 30l7.744-1.707c2.12 1.16 4.508 1.77 7.012 1.77 7.253 0 13.147-5.895 13.147-13.147S23.28 2.07 16.027 2.07Zm7.57 18.9c-.32.9-1.885 1.725-2.604 1.84-.666.1-1.515.18-4.41-.944-3.705-1.49-6.08-5.15-6.264-5.394-.18-.244-1.494-1.99-1.494-3.8 0-1.8.946-2.673 1.28-3.043.334-.37.73-.47.976-.47.243 0 .487.002.7.01.227.01.53-.085.83.63.32.775 1.09 2.674 1.19 2.866.095.19.16.42.03.68-.13.26-.195.42-.384.64-.18.213-.38.47-.543.63-.18.18-.37.37-.16.73.21.36.92 1.52 1.98 2.46 1.36 1.21 2.51 1.59 2.87 1.77.36.18.57.16.78-.095.21-.25.9-1.05 1.14-1.41.24-.36.48-.3.8-.18.32.12 2.05.97 2.4 1.15.35.18.58.27.66.42.083.15.083.88-.235 1.78Z"></path>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const LOGO_DATA_URI = "data:image/png;base64,iVBORw0K..."; // Reemplaza con tu logo real
+    const FORM_ENDPOINT = "https://formsubmit.co/ajax/TU_CORREO@EJEMPLO.COM";
+
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    const yearSpan = document.getElementById("year");
+    const logoNav = document.getElementById("logo-nav");
+    const logoHero = document.getElementById("logo-hero");
+
+    if (logoNav) logoNav.src = LOGO_DATA_URI;
+    if (logoHero) logoHero.src = LOGO_DATA_URI;
+
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        navToggle.classList.remove("active");
+      });
+    });
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+        navToggle.classList.toggle("active");
+      });
+    }
+
+    const bookingForm = document.getElementById("booking-form");
+    if (bookingForm) {
+      const successMessage = document.getElementById("form-success");
+      const errorMessage = document.getElementById("form-error");
+
+      bookingForm.addEventListener("submit", async event => {
+        event.preventDefault();
+        successMessage.classList.remove("visible");
+        errorMessage.classList.remove("visible");
+
+        const formData = new FormData(bookingForm);
+
+        try {
+          const response = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: formData
+          });
+
+          if (response.ok) {
+            successMessage.classList.add("visible");
+            bookingForm.reset();
+          } else {
+            throw new Error("Respuesta no válida");
+          }
+        } catch (error) {
+          errorMessage.classList.add("visible");
+          console.error("Error al enviar formulario:", error);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
