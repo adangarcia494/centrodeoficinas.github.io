@@ -33,7 +33,40 @@
       border-radius: 5px;
       margin-top: 20px;
     }
-  </style>
+ .productos {
+      display: grid;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .productos {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .tarjeta {
+      background: #EFF4FF;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(48, 86, 211, 0.1);
+    }
+
+    .tarjeta h3 {
+      margin-top: 0;
+      color: #1E40AF;
+    }
+
+    .precio {
+      font-weight: bold;
+      color: #1E3A8A;
+      margin-bottom: 12px;
+    }
+
+    .tarjeta .boton {
+      display: inline-block;
+      margin-top: 10px;
+    } </style>
 </head>
 <body>
   <div class="contenedor">
@@ -52,6 +85,26 @@
     Correo: centrodeoficinaszona@gmail.com</p>
     
     <a href="mailto:centrodeoficinaszona@gmail.com" class="boton">Escríbenos</a>
-  </div>
+ <h2>Espacios destacados</h2>
+    <div class="productos">
+      <div class="tarjeta">
+        <h3>Oficina privada 12 m²</h3>
+        <p>Ideal para 3 personas. Aire acondicionado, escritorio ergonómico y acceso 24/7.</p>
+        <p class="precio">Q2,800 al mes</p>
+        <a class="boton" href="mailto:centrodeoficinaszona@gmail.com?subject=Oficina privada 12 m²">Solicitar</a>
+      </div>
+      <div class="tarjeta">
+        <h3>Sala de reuniones ejecutiva</h3>
+        <p>Capacidad para 8 personas, proyector HD y coffee break incluido.</p>
+        <p class="precio">Q150 por hora</p>
+        <a class="boton" href="mailto:centrodeoficinaszona@gmail.com?subject=Sala de reuniones">Reservar</a>
+      </div>
+      <div class="tarjeta">
+        <h3>Puesto de coworking</h3>
+        <p>Espacio flexible, internet de alta velocidad y lockers individuales.</p>
+        <p class="precio">Q120 por día</p>
+        <a class="boton" href="mailto:centrodeoficinaszona@gmail.com?subject=Coworking">Más información</a>
+      </div>
+    </div> </div>
 </body>
 </html>
